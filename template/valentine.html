@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>One Last Thing 😌💖</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ffd1dc, #ffe6f0);
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            color: #d63384;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            margin-top: 100px;
+            font-size: 40px;
+        }
+
+        .sub {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .extra {
+            font-size: 18px;
+            color: #d63384;
+            margin: 10px auto 30px auto;
+            width: 60%;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .yes-btn {
+            padding: 15px 35px;
+            background: #ff4d88;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-size: 22px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .no-btn {
+            padding: 12px 25px;
+            background: #999;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .yes-btn:hover {
+            background: #ff0066;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .message {
+            margin-top: 30px;
+            font-size: 20px;
+            opacity: 0;
+            color: #ff0066;
+            font-weight: 500;
+            transition: opacity 0.5s ease;
+        }
+
+        .signature {
+            margin-top: 80px;
+            font-size: 18px;
+            opacity: 0.8;
+            transition: 0.3s;
+        }
+
+        .signature:hover {
+            opacity: 1;
+            text-shadow: 0 0 10px #ff4d88;
+        }
+
+        /* Floating hearts */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ff4d88;
+            animation: float 5s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity:1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity:0; }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="hearts"></div>
+
+<h1>One Last Question 😌💘</h1>
+
+
+
+<div class="extra">
+    Jokes apart… 🤍<br>
+    You are my comfort, my safe place, my favorite person in this world.<br>
+    I don’t just love you because you’re cute or funny…<br>
+    I love you because life feels right when you're in it. 🥺💖<br>
+    And I want us… always.
+    I LOOOVEEEEE YOUUUUUUUU😘💖
+</div>
+<div class="sub">
+    Will you be my Valentine forever? 💖
+</div>
+
+
+
+<div class="buttons">
+    <button id="yesBtn" class="yes-btn">YES 💕</button>
+    <button id="noBtn" class="no-btn">No 😏</button>
+</div>
+
+<p class="message" id="response"></p>
+
+<div class="signature">
+    Made with too much love by Sreeja 💖  <br>
+    Officially yours. No refunds. 😌💍
+</div>
+
+<script>
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const response = document.getElementById("response");
+let yesSize = 22;
+
+// Handle NO button click
+noBtn.addEventListener("click", function() {
+    yesSize += 8;
+    yesBtn.style.fontSize = yesSize + "px";
+    yesBtn.style.padding = (yesSize/1.5) + "px " + (yesSize*1.5) + "px";
+
+    yesBtn.style.animation = "heartbeat 0.6s ease";
+    setTimeout(()=> { yesBtn.style.animation = ""; }, 600);
+
+    response.innerText = "Excuse me?? 😌 You really thought 'No' was an option? You're mine. 💖YES kuthedaa🥊😡";
+    response.style.opacity = 1;
+
+    createHeartBurst(noBtn);
+});
+
+// Handle YES button click
+yesBtn.addEventListener("click", function() {
+    response.innerText = "Hehe I knew you couldn’t resist me 😌💖 Get ready for forever of inside jokes, silly dances, and endless cuddles 🥰💞, I love you too much 🥺💖";
+    response.style.opacity = 1;
+    createHeartBurst(yesBtn);
+});
+
+// Floating hearts background
+for(let i=0;i<30;i++){
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerText = '💖';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+    heart.style.fontSize = (15 + Math.random() * 15) + 'px';
+    document.querySelector('.hearts').appendChild(heart);
+}
+
+// Heart burst function
+function createHeartBurst(button){
+    const rect = button.getBoundingClientRect();
+    for(let i=0;i<5;i++){
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerText = '💖';
+        heart.style.left = (rect.left + rect.width/2) + 'px';
+        heart.style.top = rect.top + 'px';
+        heart.style.fontSize = (10 + Math.random()*10)+'px';
+        heart.style.animationDuration = (2 + Math.random()*2)+'s';
+        document.body.appendChild(heart);
+        setTimeout(()=> heart.remove(), 2000);
+    }
+}
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Love Notes 💌</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+        body {
+            font-family:'Pacifico', cursive;
+            text-align:center;
+            background:#ffe6f0;
+        }
+
+        h1 { color:#ff3399; margin-top:30px; font-size:2.5em; }
+        p { font-size:24px; color:#ff66b2; margin:20px; }
+
+        button {
+            padding:15px 30px;
+            font-size:20px;
+            border:none;
+            border-radius:50px;
+            background: #ff3399;
+            color:white;
+            cursor:pointer;
+            box-shadow: 0 5px #ff66b2;
+            transition: all 0.3s ease;
+        }
+
+        button:hover { transform: scale(1.1); box-shadow: 0 7px #ff66b2; }
+
+        a { display:block; margin-top:20px; color:#ff3399; text-decoration:none; font-size:20px; }
+        a:hover { transform:scale(1.1); }
+
+        /* Hearts on button click */
+        .heart {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: red;
+            transform: rotate(-45deg);
+            animation: float 1s linear forwards;
+        }
+
+        .heart::before,
+        .heart::after {
+            content:"";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: red;
+            border-radius:50%;
+        }
+
+        .heart::before { top:-5px; left:0; }
+        .heart::after { left:5px; top:0; }
+
+        @keyframes float {
+            0% { transform: translate(0,0) rotate(-45deg); opacity:1; }
+            100% { transform: translate(-30px,-80px) rotate(-45deg); opacity:0; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Love Note 💌</h1>
+    <p>{{ note }}</p>
+
+    <form method="get">
+        <button type="submit" id="loveBtn">Another Note 💕</button>
+    </form>
+
+    <a href="{% url 'valentine' %}">Home</a>
+
+    <script>
+        const btn = document.getElementById('loveBtn');
+        btn.addEventListener('click', (e)=>{
+            // Show little hearts flying
+            for(let i=0; i<5; i++){
+                const heart = document.createElement('div');
+                heart.className='heart';
+                heart.style.left = e.pageX + 'px';
+                heart.style.top = e.pageY + 'px';
+                document.body.appendChild(heart);
+                setTimeout(()=>heart.remove(), 1000);
+            }
+        });
+    </script>
+</body>
+</html>

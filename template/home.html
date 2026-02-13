@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Valentine's Day 💕</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #ffd1dc, #ffe6f0);
+            text-align: center;
+            color: #d63384;
+        }
+
+        h1 {
+            margin-top: 80px;
+            font-size: 50px;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        /* Heart CSS instead of image */
+        .heart-container {
+            margin-top: 30px;
+            font-size: 100px;
+            color: #ff4d88;
+            animation: heartbeat 1s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .yes-btn, .no-btn {
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 18px;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .yes-btn {
+            background: #ff4d88;
+            text-decoration: none;
+        }
+
+        .yes-btn:hover {
+            background: #ff0066;
+        }
+
+        .no-btn {
+            background: #999;
+        }
+
+        #angry-text {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #ff0066;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Heyy kutttaaaaa 💖</h1>
+
+<h2>
+    I made something special sadhanam😌… <br>
+    kanikattte😌?
+</h2>
+
+<!-- Heart beats instead of GIF -->
+<div class="heart-container">💖</div>
+
+<div class="buttons">
+    <a href="{% url 'memories' %}" class="yes-btn">YES 🌸</a>
+    <button id="no-btn" class="no-btn">NO 🥺</button>
+</div>
+
+<p id="angry-text"></p>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const noBtn = document.getElementById("no-btn");
+
+    noBtn.addEventListener("click", function () {
+        document.getElementById("angry-text").innerText =
+            "Ath enthada ninak nokkiya? 😒💕 YES press cheyyeda!";
+    });
+});
+</script>
+
+</body>
+</html>
